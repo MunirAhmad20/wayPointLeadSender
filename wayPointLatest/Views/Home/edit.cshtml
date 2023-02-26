@@ -1,0 +1,222 @@
+﻿
+@{
+    ViewData["Title"] = "edit";
+    Layout = "~/Views/layouts/waypoint_Layout.cshtml";
+}
+
+<style>
+
+@@media (min-width: 1200px)
+{
+.container-fluid-full #content {
+    width: 87.578%;
+    padding: 28px;
+    margin: 0 0;
+    margin-left: 33.422%;
+}
+}
+</style>
+<div id="content" class="span10">
+    <div class="container">
+@foreach (var i in ViewBag.Campaigns)
+{
+
+            <br />
+            <br />
+<div id="" class="span12">
+    <form class="form-horizontal" action="/Home/save_campaign" style="display:inline;" method="post" enctype="multipart/form-data" autocomplete="off">
+        <fieldset>
+
+            <div class="row-fluid ">
+                <div class="box span4" style="min-width:500px">
+                    <div class="box-header">
+                        <h2><i class="icon-edit"></i>Campaign Details</h2>
+                        <div class="box-icon">
+                            <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                            <input style="display:none;" name="tid" value="@i.Id">
+                        @*<div class="control-group">
+                            <label class="control-label" for="customers:monetizer_id">Customer</label>
+                            <div class="controls"><select name="customers" id="selectcustomers:monetizer_id"><option value="" selected=""></option><option value="Doug">Doug</option><option value="Customer">Example Customer</option><option value="GMG">GMG</option><option value="Wisdom">Wisdom</option></select></div>
+                        </div>*@
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="customers:companyname">Campaign Name</label>
+                                <div class="controls"><input type="text" class="input-large" name="compeignname" id="customers:companyname" value="@i.campaignname"></div>
+
+                        </div>
+                                    @*<div class="control-group">
+                            <label class="control-label" for="customers:deliverymethod">Delivery Method</label>
+                            <div class="controls"><select name="customers:deliverymethod" id="deliverymethod"><option value="ESP">ESP</option></select></div>
+                        </div>
+                       <div class="control-group">
+                            <label class="control-label" for="customers:exclusivity">Exclusivity</label>
+                            <div class="controls"><select name="exclusivity" id="exclusivity"><option value="Shared">Shared</option><option value="Exclusive">Exclusive</option></select></div>
+                        </div>*@
+                        <div class="control-group">
+                            <label class="control-label" for="customers:exclusivity">Select Source</label>
+                            <div class="controls">
+                                <select name="source" id="mysource">
+
+                                    @foreach (var i1 in ViewBag.source)
+                                    {
+
+                                                    <option value="@i1.Name">@i1.Name </option>
+
+                                    }
+
+                                </select>
+                            </div>
+
+                        </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="customers:exclusivity">Select ESP</label>
+                                        <div class="controls" style="display: flex;">
+                                           @* <input type="checkbox" id="vehicle1" name="espa" value="esp">
+                                            <label for="vehicle1"> Esp</label><br>
+                                            <input type="checkbox" id="vehicle2" name="espb" value="outlook">
+                                            <label for="vehicle2"> Outlook</label><br>*@
+
+
+
+                                            @if (i.espb != null)
+                                            {
+                                                <input type="checkbox" checked="" id="vehicle3" name="espc" value="yahoo">
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox"  id="vehicle3" name="espc" value="yahoo">
+                                            }
+                                            <label for="vehicle3"> Yahoo</label><br>
+                                            @if (i.espc!=null)
+                                            {
+                                                
+                                            
+                                                <input type="checkbox" id="vehicle4" checked="" name="espd" value="gmail">
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" id="vehicle4"  name="espd" value="gmail">
+                                            }
+                                            <label for="vehicle4"> Gmail</label><br>
+                                            @if (i.espd != null)
+                                            {
+                                                <input type="checkbox" id="vehicle5" checked="" name="espe" value="ymail">
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" id="vehicle5"  name="espe" value="ymail">
+                                            }
+                                            <label for="vehicle5"> Ymail</label><br>
+                                            @if (i.espe != null)
+                                            {
+
+
+                                                <input type="checkbox" checked="" id="vehicle6" name="espf" value="aol">
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox"  id="vehicle6" name="espf" value="aol">
+                                            }
+                                            <label for="vehicle6"> Aol</label><br>
+                                            @*             <select name="esp" id="mysource">
+
+                                        <option value="esp">Esp</option>
+                                        <option value="outlook">Outlook</option>
+                                        <option value="yahoo">Yahoo</option>
+                                        <option value="gmail">Gmail</option>
+                                        <option value="ymail">Ymail</option>
+                                        <option value="aol">Aol</option>
+
+                                        </select>*@
+                                        </div>
+
+                                    </div>
+
+                        @*                      <div class="control-group">
+                        <label class="control-label" for="customers:exclusivity">Select Source List</label>
+                        <div class="controls">
+                        <select name="sourcelist" id="lists">
+
+                        </select>
+                        </div>
+
+                        </div>*@
+
+                        <div class="control-group">
+                            <label class="control-label" for="customers:destination">Destination</label>
+                                        <div class="controls"><input type="text" class="input-large" name="destination" id="customers:destination" value="@i.destination"></div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="customers:destination">List ID</label>
+                                <div class="controls"><input type="text" class="input-large" name="listid" id="customers:destination" value="@i.list_id"></div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="customers:ref_key">Reference Key</label>
+                                <div class="controls"><input type="text" class="input-large" name="ref_key" id="customers:ref_key" value="@i.auth_key"></div>
+                        </div>
+                       @* <div class="control-group">
+                            <label class="control-label" for="customers:valid_responses">Valid Responses (comma delimited)</label>
+                            <div class="controls"><input type="text" class="input-large" name="valid_responses" id="customers:valid_responses" value=""></div>
+                        </div>*@
+                        <div class="control-group">
+                            <label class="control-label" for="customers:status">Total Number of leads</label>
+                                <div class="controls"><input type="text" class="input-large" name="totalleads" id="customers:valid_responses" value="@i.totalleads"></div>
+                        </div>
+                        <div class="control-group">
+                        <label class="control-label" for="customers:status"># leads (Per Day)</label>
+                                        <div class="controls"><input type="text" class="input-large" name="leadperday" id="customers:valid_responses" value="@i.leadperday"></div>
+                        </div>
+                     @*   <div class="control-group">
+                            <label class="control-label" for="customers:rate">Rate</label>
+                                <div class="controls"><input type="text" class="input-large" name="rate" id="customers:rate" value="@i.rate"></div>
+                        </div>*@
+                      
+                        <div class="control-group">
+                            <label class="control-label" for="customers:delivery_delay">Delivery Throttle(Hours)</label>
+                            <div class="controls"><input type="text" class="input-large" name="delivery_delay" id="customers:delivery_delay" value="1"></div>
+                        </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="customers:label_name">Label</label>
+                                        <div class="controls"><input type="text" class="input-large" name="label_name" id="customers:label_name" value="@i.label"></div>
+                                    </div>
+                     @*   <div class="control-group">
+                            <label class="control-label" for="customers:vnotes">Notes</label>
+                                <div class="controls"><input type="text" class="input-large" name="notes" id="customers:vnotes" value="@i.notes"></div>
+                        </div>*@
+                       @* <div class="control-group">
+                            <label class="control-label" for="customers:postpone_interval">Postpone Delivery (hh:mm:ss)</label>
+                            <div class="controls"><input type="text" class="input-large" name="postpone_interval" id="customers:postpone_interval" value=""></div>
+                        </div>*@
+                                    <div class="control-group">
+                                        <label class="control-label" for="customers:exclusivity">Select Source</label>
+                                        <div class="controls">
+                                            <select name="status" id="mysource">
+
+
+
+                                                <option value="Active">Active </option>
+                                                <option value="Disable">DisAble </option>
+
+                                              
+
+                                            </select>
+                                        </div>
+
+                                    </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </fieldset>
+    </form>
+</div>
+
+                       }
+
+                               </div>  
+                               </div>  
